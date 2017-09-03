@@ -5,7 +5,7 @@ const CleanWebpackPlugin = require('clean-webpack-plugin');
 const distFolder = 'dist';
 
 module.exports = {
-  entry: './src/index.js',
+  entry: './src/index.jsx',
   output: {
     filename: '[hash].js',
     path: path.resolve(__dirname, 'dist')
@@ -16,7 +16,8 @@ module.exports = {
   },
   plugins: [
     new HtmlWebpackPlugin({
-      title: 'Video Post'
+      title: 'Video Post',
+      template: './src/index.ejs',
     }),
     new CleanWebpackPlugin([distFolder]),
   ],
@@ -24,12 +25,12 @@ module.exports = {
     rules: [
       {
         enforce: "pre",
-        test: /\.js$/,
+        test: /\.jsx?$/,
         exclude: /node_modules/,
         loader: "eslint-loader",
       },
       {
-        test: /\.js$/,
+        test: /\.jsx?$/,
         exclude: /node_modules/,
         loader: "babel-loader",
       },

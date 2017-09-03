@@ -4,10 +4,10 @@ module.exports = {
         'es6': true,
         'commonjs': true,
     },
-    'extends': 'eslint:recommended',
+    'extends': ['eslint:recommended', "plugin:react/recommended"],
     'parserOptions': {
         'ecmaFeatures': {
-            'jsx': true
+            'jsx': true,
         },
         'sourceType': 'module'
     },
