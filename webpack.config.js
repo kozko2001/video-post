@@ -5,7 +5,12 @@ const CleanWebpackPlugin = require('clean-webpack-plugin');
 const distFolder = 'dist';
 
 module.exports = {
-  entry: './src/index.jsx',
+  entry: {
+    'app': [
+      'react-hot-loader/patch',
+      './src/index.jsx'
+    ],
+  },
   output: {
     filename: '[hash].js',
     path: path.resolve(__dirname, 'dist')
@@ -32,7 +37,7 @@ module.exports = {
       {
         test: /\.jsx?$/,
         exclude: /node_modules/,
-        loader: "babel-loader",
+        loaders: ['react-hot-loader/webpack', 'babel-loader'],
       },
     ]
   }

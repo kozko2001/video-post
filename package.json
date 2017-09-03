@@ -17,12 +17,13 @@
   },
   "scripts": {
     "build": "webpack",
-    "start": "webpack-dev-server --open"
+    "start": "webpack-dev-server --open --hot --history-api-fallback"
   },
   "dependencies": {
     "babel-preset-react": "^6.24.1",
     "eslint-plugin-react": "^7.3.0",
     "react": "^15.6.1",
-    "react-dom": "^15.6.1"
+    "react-dom": "^15.6.1",
+    "react-hot-loader": "next"
   }
 }
