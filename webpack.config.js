@@ -26,10 +26,13 @@ module.exports = {
     }),
     new CleanWebpackPlugin([distFolder]),
   ],
+  resolve: {
+    extensions: ['.js', '.jsx'],
+  },
   module: {
     rules: [
       {
-        enforce: "pre",
+        enforce: 'pre',
         test: /\.jsx?$/,
         exclude: /node_modules/,
         loader: "eslint-loader",

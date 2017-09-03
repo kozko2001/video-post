@@ -1,7 +1,7 @@
 import React from 'react'
 import ReactDOM from 'react-dom'
 import { AppContainer } from 'react-hot-loader'
-import HelloWorld from './helloworld.jsx'
+import App from './App'
 
 let render = (MainComponent) => {
   ReactDOM.render(
@@ -12,12 +12,12 @@ let render = (MainComponent) => {
   );
 }
 
-render(<HelloWorld />);
+render(<App />);
 
 // Hot Module Replacement API
 if (module.hot) {
-  module.hot.accept('./helloworld.jsx', () => {
-    const New = require('./helloworld.jsx').default;
+  module.hot.accept('./App', () => {
+    const New = require('./App').default;
     render(<New />);
   });
 }
