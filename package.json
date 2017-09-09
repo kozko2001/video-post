@@ -24,6 +24,7 @@
     "eslint-plugin-react": "^7.3.0",
     "react": "^15.6.1",
     "react-dom": "^15.6.1",
-    "react-hot-loader": "next"
+    "react-hot-loader": "next",
+    "react-youtube": "^7.4.0"
   }
 }

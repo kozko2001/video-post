@@ -1,9 +1,18 @@
 import React from 'react';
+import YouTube from 'react-youtube'
 
 export default class App extends React.Component {
     render(){
+      const videoOpts = {
+        playerVars: {
+          autoplay: 1,
+        }
+      }
       return (
-        <h1>Hello World</h1>
+        <YouTube
+          videoId="f7rstBsOPHk"
+          opts={videoOpts}
+        />
       );
     }
 }
