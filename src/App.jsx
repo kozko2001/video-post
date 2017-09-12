@@ -1,6 +1,7 @@
 import React from 'react';
 import YouTube from 'react-youtube'
 import Markdown from './markdown/VideoMarkdown'
+import './App.scss'
 
 let someMarkdownExample = `
 
@@ -22,6 +23,29 @@ let someMarkdownExample = `
 # Header 1 [[ts 00:02:35]]
 # Header 1 [[ts 00:02:45]]
 # Header 1 [[ts 00:02:55]]
+## aaaaaaaaaaaaaaaaaaaaaa
+## aaaaaaaaaaaaaaaaaaaaaa
+## aaaaaaaaaaaaaaaaaaaaaa
+## aaaaaaaaaaaaaaaaaaaaaa
+## aaaaaaaaaaaaaaaaaaaaaa
+## aaaaaaaaaaaaaaaaaaaaaa
+## aaaaaaaaaaaaaaaaaaaaaa
+## aaaaaaaaaaaaaaaaaaaaaa
+## aaaaaaaaaaaaaaaaaaaaaa
+## aaaaaaaaaaaaaaaaaaaaaa
+## aaaaaaaaaaaaaaaaaaaaaa
+## aaaaaaaaaaaaaaaaaaaaaa
+## aaaaaaaaaaaaaaaaaaaaaa
+## aaaaaaaaaaaaaaaaaaaaaa
+## aaaaaaaaaaaaaaaaaaaaaa
+## aaaaaaaaaaaaaaaaaaaaaa
+## aaaaaaaaaaaaaaaaaaaaaa
+## aaaaaaaaaaaaaaaaaaaaaa
+## aaaaaaaaaaaaaaaaaaaaaa
+## aaaaaaaaaaaaaaaaaaaaaa
+## aaaaaaaaaaaaaaaaaaaaaa
+
+## aaaaaaaaaaaaaaaaaaaaaa
 `
 
 export default class App extends React.Component {
@@ -29,23 +53,28 @@ export default class App extends React.Component {
     const videoOpts = {
       playerVars: {
         autoplay: 1,
-      }
+      },
     }
 
     return (
-      <div>
-        <YouTube
-          videoId="f7rstBsOPHk"
-          opts={videoOpts}
-          onReady={(event) => this.videoReady(event)}
-          onStateChange={(event) => this.onVideoStateChanged(event)}
-        />
-
-        <div style={{overflowY: 'scroll', height: '300px'}}>
-          <Markdown markdown={someMarkdownExample}
-            changeVideoTime={(time) => this.changeVideoTime(time)}
-          />
-        </div>
+      <div className='container'>
+          <div className='columns video'>
+            <div className='column is-12'>
+              <YouTube
+                videoId="f7rstBsOPHk"
+                opts={videoOpts}
+                onReady={(event) => this.videoReady(event)}
+                onStateChange={(event) => this.onVideoStateChanged(event)}
+              />
+            </div>
+          </div>
+          <div className='columns markdown'>
+            <div className='column is-12'>
+              <Markdown markdown={someMarkdownExample}
+                changeVideoTime={(time) => this.changeVideoTime(time)}
+              />
+            </div>
+          </div>
       </div>
     );
   }

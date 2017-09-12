@@ -9,7 +9,7 @@ class VideoMarkdownTime extends React.Component {
     let clickHandle = () => this.props.updateTime(this.props.time)
     let id = `video-ts-${this.props.time}`
 
-    return <span id={id} onClick={clickHandle}> [[{formattedTime}]] </span>
+    return <span className='ts-button button is-outlined is-dark is-small' id={id} onClick={clickHandle}> [[{formattedTime}]] </span>
   }
 
   /**
