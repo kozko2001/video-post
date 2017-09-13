@@ -1,54 +1,31 @@
 import React from 'react';
 import YouTube from 'react-youtube'
 import Markdown from './markdown/VideoMarkdown'
+import highlight from 'highlight.js'
 import './App.scss'
 
 let someMarkdownExample = `
 
-# Header 1 [[ts 00:00:05]]
-# Header 1 [[ts 00:00:15]]
-# Header 1 [[ts 00:00:25]]
-# Header 1 [[ts 00:00:35]]
-# Header 1 [[ts 00:00:45]]
-# Header 1 [[ts 00:00:55]]
-# Header 1 [[ts 00:01:05]]
-# Header 1 [[ts 00:01:15]]
-# Header 1 [[ts 00:01:25]]
-# Header 1 [[ts 00:01:35]]
-# Header 1 [[ts 00:01:45]]
-# Header 1 [[ts 00:01:55]]
-# Header 1 [[ts 00:02:05]]
-# Header 1 [[ts 00:02:15]]
-# Header 1 [[ts 00:02:25]]
-# Header 1 [[ts 00:02:35]]
-# Header 1 [[ts 00:02:45]]
-# Header 1 [[ts 00:02:55]]
-## aaaaaaaaaaaaaaaaaaaaaa
-## aaaaaaaaaaaaaaaaaaaaaa
-## aaaaaaaaaaaaaaaaaaaaaa
-## aaaaaaaaaaaaaaaaaaaaaa
-## aaaaaaaaaaaaaaaaaaaaaa
-## aaaaaaaaaaaaaaaaaaaaaa
-## aaaaaaaaaaaaaaaaaaaaaa
-## aaaaaaaaaaaaaaaaaaaaaa
-## aaaaaaaaaaaaaaaaaaaaaa
-## aaaaaaaaaaaaaaaaaaaaaa
-## aaaaaaaaaaaaaaaaaaaaaa
-## aaaaaaaaaaaaaaaaaaaaaa
-## aaaaaaaaaaaaaaaaaaaaaa
-## aaaaaaaaaaaaaaaaaaaaaa
-## aaaaaaaaaaaaaaaaaaaaaa
-## aaaaaaaaaaaaaaaaaaaaaa
-## aaaaaaaaaaaaaaaaaaaaaa
-## aaaaaaaaaaaaaaaaaaaaaa
-## aaaaaaaaaaaaaaaaaaaaaa
-## aaaaaaaaaaaaaaaaaaaaaa
-## aaaaaaaaaaaaaaaaaaaaaa
+# Savjz [[ts 00:00:05]]
+How he  is lucky enough to find the card he need!
 
-## aaaaaaaaaaaaaaaaaaaaaa
+\`\`\`js
+let x = 2;
+\`\`\`
+meeek
+\`\`\`swift
+func xxx() {
+  something();
+}
+\`\`\`
+
 `
 
 export default class App extends React.Component {
+  componentDidMount() {
+    highlight.initHighlighting();
+  }
+
   render() {
     const videoOpts = {
       playerVars: {
@@ -70,7 +47,7 @@ export default class App extends React.Component {
           </div>
           <div className='columns markdown'>
             <div className='column is-12'>
-              <Markdown markdown={someMarkdownExample}
+              <Markdown markdown={someMarkdownExample} className='markdown-body'
                 changeVideoTime={(time) => this.changeVideoTime(time)}
               />
             </div>
