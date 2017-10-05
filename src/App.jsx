@@ -1,29 +1,27 @@
 import React from 'react';
+import PropTypes from 'prop-types'
 import YouTube from 'react-youtube'
 import Markdown from './markdown/VideoMarkdown'
 import highlight from 'highlight.js'
 import './App.scss'
 
-let someMarkdownExample = `
-
-# Savjz [[ts 00:00:05]]
-How he  is lucky enough to find the card he need!
-
-\`\`\`js
-let x = 2;
-\`\`\`
-meeek
-\`\`\`swift
-func xxx() {
-  something();
-}
-\`\`\`
-
-`
-
 export default class App extends React.Component {
   componentDidMount() {
     highlight.initHighlighting();
+  }
+
+  /**
+   * Extracts the videoId from the markdown
+   *
+   * @param {any} markdown
+   * @returns
+   * @memberof App
+   */
+  getVideoId(markdown) {
+    let regex = /\[\[youtube id=([^ \]]+)\]\]/;
+    let match = regex.exec(markdown);
+
+    return match[1];
   }
 
   render() {
@@ -33,12 +31,14 @@ export default class App extends React.Component {
       },
     }
 
+    let videoId = this.getVideoId(this.props.markdown)
+
     return (
       <div className='container'>
           <div className='columns video'>
             <div className='column is-12'>
               <YouTube
-                videoId="f7rstBsOPHk"
+                videoId={videoId}
                 opts={videoOpts}
                 onReady={(event) => this.videoReady(event)}
                 onStateChange={(event) => this.onVideoStateChanged(event)}
@@ -47,7 +47,7 @@ export default class App extends React.Component {
           </div>
           <div className='columns markdown'>
             <div className='column is-12'>
-              <Markdown markdown={someMarkdownExample} className='markdown-body'
+              <Markdown markdown={this.props.markdown} className='markdown-body'
                 changeVideoTime={(time) => this.changeVideoTime(time)}
               />
             </div>
@@ -116,4 +116,9 @@ export default class App extends React.Component {
   stopInterval() {
     clearInterval(this.interval)
   }
+}
+
+
+App.propTypes = {
+  markdown: PropTypes.string.isRequired,
 }
